@@ -12,6 +12,6 @@ Gobaber back-end built in NodeJs and Typescript
 
 ## Project Overview
 
-![Screenshot](./assets/img1.jpg)
+![Screenshot](./assets/img.jpg)
 
 ## Keep coding!!
