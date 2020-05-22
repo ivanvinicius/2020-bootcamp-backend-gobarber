@@ -1,5 +1,7 @@
 import express from 'express';
 
+import './database';
+
 import logRequest from './utils/logRequest';
 import routes from './routes';
 
