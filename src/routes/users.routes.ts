@@ -2,10 +2,12 @@ import { Router } from 'express';
 import { getRepository } from 'typeorm';
 import multer from 'multer';
 
-import uploadConfig from '../config/upload';
-
 import User from '../models/User';
+
 import CreateUsersService from '../services/CreateUserService';
+import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
+
+import uploadConfig from '../config/upload';
 
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
@@ -46,9 +48,20 @@ usersRouter.patch(
   ensureAuthenticated,
   upload.single('avatar'),
   async (request, response) => {
-    console.log(request.file);
+    try {
+      const updateUserAvatar = new UpdateUserAvatarService();
 
-    return response.json({ message: 'Profile picture was uploaded.' });
+      const user = await updateUserAvatar.execute({
+        user_id: request.user.id,
+        avatarFileName: request.file.filename,
+      });
+
+      delete user.password;
+
+      return response.json(user);
+    } catch (err) {
+      return response.status(400).json({ error: err.message });
+    }
   },
 );
 
