@@ -1,9 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 
-export default function logRequest(request: Request, response: Response, next: NextFunction): any {
+export default function logRequest(
+  request: Request,
+  response: Response,
+  next: NextFunction,
+): string | void {
   const { method, url } = request;
 
-  const log: string = `[${method.toUpperCase()}] ${url} `;
+  const log = `[${method.toUpperCase()}] ${url} `;
 
   /* eslint-disable no-console */
   console.time(log);
