@@ -2,15 +2,13 @@ import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-
 import 'express-async-errors';
 
-import './database';
-
-import logRequest from './middlewares/logRequest';
-import routes from './routes';
-import uploadConfig from './config/upload';
-import AppError from './errors/AppError';
+import '@shared/infra/typeorm';
+import logRequest from '@shared/infra/http/middlewares/logRequest';
+import routes from '@shared/infra/http/routes';
+import uploadConfig from '@config/upload';
+import AppError from '@shared/errors/AppError';
 
 const app = express();
 
@@ -28,6 +26,8 @@ app.use(
         messsage: error.message,
       });
     }
+
+    console.log(error);
 
     return response.status(500).json({
       status: 'error',
