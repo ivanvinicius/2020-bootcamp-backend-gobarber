@@ -7,7 +7,7 @@ import 'express-async-errors';
 
 import './database';
 
-import logRequest from './utils/logRequest';
+import logRequest from './middlewares/logRequest';
 import routes from './routes';
 import uploadConfig from './config/upload';
 import AppError from './errors/AppError';
