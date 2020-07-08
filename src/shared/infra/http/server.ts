@@ -6,8 +6,8 @@ import 'express-async-errors';
 
 import '@shared/infra/typeorm';
 import '@shared/container';
-import logRequest from '@shared/infra/http/middlewares/logRequest';
 import routes from '@shared/infra/http/routes';
+import logRequest from '@shared/infra/http/middlewares/logRequest';
 import uploadConfig from '@config/upload';
 import AppError from '@shared/errors/AppError';
 
@@ -15,9 +15,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(logRequest);
-app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
+app.use('/files', express.static(uploadConfig.tmpFolder));
+app.use(logRequest);
 
 app.use(
   (error: Error, request: Request, response: Response, _next: NextFunction) => {
@@ -27,8 +27,6 @@ app.use(
         messsage: error.message,
       });
     }
-
-    console.log(error);
 
     return response.status(500).json({
       status: 'error',
