@@ -1,6 +1,6 @@
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 
-class BCryptHashProvider implements IHashProvider {
+export default class FakeHashProvider implements IHashProvider {
   public async generateHash(payload: string): Promise<string> {
     return payload;
   }
@@ -9,4 +9,3 @@ class BCryptHashProvider implements IHashProvider {
     return payload === hashed;
   }
 }
-export default BCryptHashProvider;
