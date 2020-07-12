@@ -18,22 +18,47 @@ describe('ListProviderMonthAvailability', () => {
   it('should be able to list the month availability from provider', async () => {
     await fakeAppointmentsRepository.create({
       provider_id: 'p1',
-      date: new Date(2020, 3, 12, 16, 0, 0),
+      date: new Date(2020, 6, 12, 8, 0, 0),
     });
-
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 9, 0, 0),
+    });
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 10, 0, 0),
+    });
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 11, 0, 0),
+    });
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 12, 0, 0),
+    });
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 13, 0, 0),
+    });
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 14, 0, 0),
+    });
+    await fakeAppointmentsRepository.create({
+      provider_id: 'p1',
+      date: new Date(2020, 6, 12, 15, 0, 0),
+    });
     await fakeAppointmentsRepository.create({
       provider_id: 'p1',
       date: new Date(2020, 6, 12, 16, 0, 0),
     });
-
     await fakeAppointmentsRepository.create({
       provider_id: 'p1',
-      date: new Date(2020, 6, 13, 12, 0, 0),
+      date: new Date(2020, 6, 12, 17, 0, 0),
     });
-
     await fakeAppointmentsRepository.create({
       provider_id: 'p1',
-      date: new Date(2020, 6, 13, 15, 0, 0),
+      date: new Date(2020, 6, 13, 8, 0, 0),
     });
 
     const availability = await listProviderMonthAvailability.execute({
@@ -44,10 +69,10 @@ describe('ListProviderMonthAvailability', () => {
 
     expect(availability).toEqual(
       expect.arrayContaining([
-        { day: 11, availability: true },
-        { day: 12, availability: false },
-        { day: 13, availability: false },
-        { day: 14, availability: true },
+        { day: 11, available: true },
+        { day: 12, available: false },
+        { day: 13, available: true },
+        { day: 14, available: true },
       ]),
     );
   });
