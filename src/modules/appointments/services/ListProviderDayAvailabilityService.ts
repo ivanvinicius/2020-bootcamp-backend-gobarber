@@ -22,7 +22,6 @@ export default class ListProviderDayAvailabilityService {
     private appointmentsRepository: IAppointmentsRepository,
   ) {}
 
-  /** Erro, hora atual é available false */
   public async execute({
     provider_id,
     day,
