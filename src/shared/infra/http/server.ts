@@ -28,9 +28,12 @@ app.use(
       });
     }
 
+    // console.log(error);
+
     return response.status(500).json({
       status: 'error',
       message: 'Internal server error.',
+      errorDetail: error.message,
     });
   },
 );

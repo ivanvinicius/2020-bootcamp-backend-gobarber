@@ -1,4 +1,5 @@
 import AppError from '@shared/errors/AppError';
+
 import FakeAppointmentsRepository from '@modules/appointments/repositories/fakes/FakeAppointmentsRepository';
 import CreateAppointmentService from './CreateAppointmentService';
 
@@ -18,6 +19,7 @@ describe('CreateAppointment', () => {
     const appointment = await createAppointment.execute({
       date: new Date(),
       provider_id: '123123',
+      user_id: '123',
     });
 
     expect(appointment).toHaveProperty('id');
@@ -30,12 +32,14 @@ describe('CreateAppointment', () => {
     await createAppointment.execute({
       date: appointmentDate,
       provider_id: '123123',
+      user_id: '123',
     });
 
     await expect(
       createAppointment.execute({
         date: appointmentDate,
         provider_id: '123123',
+        user_id: '123',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
