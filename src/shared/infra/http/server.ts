@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use(logRequest);
 app.use(routes);
-app.use('/files', express.static(uploadConfig.tmpFolder));
+app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(errors());
 
 app.use(
