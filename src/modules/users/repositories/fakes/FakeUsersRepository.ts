@@ -7,7 +7,7 @@ import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IFindAllProvidersDTO from '@modules/appointments/dtos/IFindAllProvidersDTO';
 
 export default class FakeUsersRepository implements IUserRepository {
-  users: User[] = [];
+  private users: User[] = [];
 
   public async findById(id: string): Promise<User | undefined> {
     const findUser = this.users.find(user => user.id === id);
