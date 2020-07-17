@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { Request, Response, NextFunction } from 'express';
 
 export default function logRequest(
@@ -9,7 +11,6 @@ export default function logRequest(
 
   const log = `[${method.toUpperCase()}] ${url} `;
 
-  /* eslint-disable no-console */
   console.time(log);
   next();
   console.timeEnd(log);
