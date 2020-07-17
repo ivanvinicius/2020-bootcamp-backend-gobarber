@@ -1,0 +1,33 @@
+[
+
+  {
+    "name": "default",
+    "type": "",
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": "",
+    "database": "",
+    "entities": [
+      ""
+    ],
+    "migrations": [
+      ""
+    ],
+    "cli": {
+      "migrationsDir": ""
+    }
+  },
+
+  {
+    "name": "",
+    "type": "",
+    "host": "",
+    "port": "",
+    "database": "",
+    "useUnifiedTopology": "",
+    "entities": [
+      ""
+    ]
+  }
+]
