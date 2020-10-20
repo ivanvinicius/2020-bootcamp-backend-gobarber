@@ -36,7 +36,7 @@ class CreateAppointmentService {
     }
 
     if (provider_id === user_id) {
-      throw new AppError('You can not create an appointment with youself');
+      throw new AppError('You can not create an appointment with yourself');
     }
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
