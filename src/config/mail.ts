@@ -13,8 +13,8 @@ export default {
 
   defaults: {
     from: {
-      email: 'ivan@gobudget.com',
-      name: 'Ivan',
+      email: 'ivan@gobudget.org',
+      name: 'Ivan da Gobudget',
     },
   },
 } as IMailConfig;
