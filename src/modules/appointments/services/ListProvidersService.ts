@@ -26,9 +26,9 @@ export default class ListProviderService {
       users = await this.usersRepository.findAllProviders({
         except_user_id: user_id,
       });
-    }
 
-    await this.cacheProvider.save(`providers-list:${user_id}`, users);
+      await this.cacheProvider.save(`providers-list:${user_id}`, users);
+    }
 
     return users;
   }
