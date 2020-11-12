@@ -21,10 +21,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(logRequest);
-app.use(rateLimiter);
-app.use(routes);
-app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(errors());
+app.use('/files', express.static(uploadConfig.uploadsFolder));
+app.use(rateLimiter); // in any does not apply rate limiter to files route
+app.use(routes);
 
 app.use(
   (error: Error, request: Request, response: Response, _next: NextFunction) => {
